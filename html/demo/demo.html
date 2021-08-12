@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Julkaisukanavan REST-rajapinta demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+  <link href="footer.css" rel="stylesheet">
+
+  <!-- Esimerkkisovelluksen toiminnallisuus --> 
+  <script src="demo.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+  <br/><br/><div id="msgid"class="alert alert-info" role="alert" size="100"></div>
+  <h2>Julkaisukanavahaku</h2>
+  
+  <form class="form-horizontal" role="form" id="demo">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Kanavatyyppi:</label>
+      <div class="col-sm-10">
+	
+	<div class="dropdown">
+		 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Valitse...
+		 <span class="caret"></span></button>
+  		 <ul class="dropdown-menu">
+			<li><a href="#">Lehti/sarja</a></li>
+    			<li><a href="#">Kirjakustantaja</a></li>
+    			<li><a href="#">Konfferenssi</a></li>
+		</ul>
+	</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Julkaisukanava:</label>
+      <div class="col-sm-1">
+	<div class="dropdown">
+                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Valitse...
+                 <span class="caret"></span></button>
+                 <ul class="dropdown-menu">
+                        <li><a href="#">nimi</a></li>
+                        <li><a href="#">issn</a></li>
+                        <li><a href="#">isbn</a></li>
+			<li><a href="#">lyhenne</a></li>
+                </ul>
+	</div>
+	</div>
+	 <div class="col-sm-8">
+        <input type="text" class="form-control" id="jnimi" placeholder="Hae julkaisukanavaa">
+	</div>
+      </div>
+    </div>
+  </form>
+  
+  
+
+  <div class="col-sm-offset-2 col-sm-3">
+  <p><strong>Automaattisesti haettavat tiedot:</strong></p>
+  <div><b>Jufo_ID</b></div><div id="Jufo_ID"></div>
+  <div><b>Level</b></div><div id="Level"></div>
+  <div><b>Name</b></div><div id="Name"></div>
+  <div><b>Abbreviation</b></div><div id="Abbreviation"></div>
+  <div><b>Other_Title</b></div><div id="Other_Title"></div>
+  <div><b>Title_Details</b></div><div id="Title_Details"></div>
+  <div><b>ISSNL</b></div><div id="ISSNL"></div>
+  <div><b>ISSN1</b></div><div id="ISSN1"></div>
+  <div><b>ISSN2</b></div><div id="ISSN2"></div>
+  <div><b>ISBN</b></div><div id="ISBN"></div>
+  <div><b>Continues</b></div><div id="Continues"></div>
+  <div><b>Continued_by</b></div><div id="Continued_by"></div>
+  <div><b>Type</b></div><div id="Type"></div>
+  <div><b>Website</b></div><div id="Website"></div>
+  <div><b>Country</b></div><div id="Country"></div>
+  <div><b>Publisher</b></div><div id="Publisher"></div>
+  <div><b>Language</b></div><div id="Language"></div>
+  <div><b>Year_Start</b></div><div id="Year_Start"></div>
+  <div><b>Year_End</b></div><div id="Year_End"></div>
+  <div><b>Active</b></div><div id="Active"></div>
+  <div><b>Norway_Level</b></div><div id="Norway_Level"></div>
+  <div><b>Denmark_Level</b></div><div id="Denmark_Level"></div>
+  <div><b>SJR_SJR</b></div><div id="SJR_SJR"></div>
+  <div><b>SNIP</b></div><div id="SNIP"></div>
+  <div><b>IPP</b></div><div id="IPP"></div>
+  <div><b>DOAJ_Index</b></div><div id="DOAJ_Index"></div>
+  <div><b>Sherpa_Romeo_Code</b></div><div id="Sherpa_Romeo_Code"></div>
+  <div><b>CreatedAt</b></div><div id="CreatedAt"></div>
+  <div><b>ModifiedAt</b></div><div id="ModifiedAt"></div>
+  <div><b>Active_Binary</b></div><div id="Active_Binary"></div>
+  <div><b>Predator</b></div><div id="Predator"></div>
+  <div><b>Jufo_2012</b></div><div id="Jufo_2012"></div>
+  <div><b>Jufo_2013</b></div><div id="Jufo_2013"></div>
+  <div><b>Jufo_2014</b></div><div id="Jufo_2014"></div>
+  <div><b>Jufo_2015</b></div><div id="Jufo_2015"></div>
+  <div><b>Fields</b></div><div id="Fields"></div>
+  <div><b>Scientific</b></div><div id="Scientific"></div>
+  <div><b>Professional</b></div><div id="Professional"></div>
+  </div>
+ 
+  <div class="col-sm-offset-2 col-sm-3">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">        
+        <div>
+          <button type="submit" class="btn btn-default" onClick="javascript:resetoi_lomake();">Uusi haku</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+   <footer class="footer">
+      <div class="container">
+          <center>
+	    <img width= "200" aheight="10" src="tsv.png">
+	    <img width= "200" aheight="10" src="csc-logo-teksti-en.png">
+	  </center>
+      </div>
+   </footer>
+
+
+</body>
+</html>
